@@ -1,9 +1,8 @@
-//your JS code here. If required.
 document.addEventListener('DOMContentLoaded', () => {
   const tableBody = document.getElementById('output');
 
- 
   const loadingRow = document.createElement('tr');
+  loadingRow.id = 'loading'; 
   loadingRow.innerHTML = '<td colspan="2">Loading...</td>';
   tableBody.appendChild(loadingRow);
 
@@ -21,14 +20,12 @@ document.addEventListener('DOMContentLoaded', () => {
   ];
 
   const startTime = performance.now(); 
- 
-  Promise.all(promises).then((results) => {
-    const totalTime = ((performance.now() - startTime) / 1000).toFixed(3); // Total time taken
 
-   
+  Promise.all(promises).then((results) => {
+    const totalTime = ((performance.now() - startTime) / 1000).toFixed(3); 
+
     tableBody.innerHTML = '';
 
-    
     results.forEach((result, index) => {
       const row = document.createElement('tr');
       row.innerHTML = `<td>${result.name}</td><td>${result.time}</td>`;
